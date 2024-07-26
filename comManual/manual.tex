@@ -1,0 +1,79 @@
+% !TeX program = xelatex
+\documentclass[cn, twoside]{myModel}
+\basicInformation{AppleMuscle}{lixianlongouc@gmail.com}
+\backgroundName{1564367343.eps}{.7}{.1}
+
+\begin{document}
+	\maketitle
+	\section{GitHub}
+		\par{}GitHub，是一个面向开源的软件存储和管理平台，因为只支持Git作为唯一的版本库格式进行托管，故名为GitHub。由于可以轻松的寻找到大量的开源代码文件，GitHub已经成为了管理软件开发等功能的首选方法，被誉为“程序员的维基百科”。但GitHub使用git分布式版本控制系统，是基于Linux系统开发而创造的，对Windows系统使用者来讲并不算友好，因此需要系统的学习才能熟练应用。
+		\subsection{前期准备}
+			\par{}GitHub的官方网址为\url{https://github.com}\footnote{国内进入此网站不太稳定，推荐使用VPN连接}。进入网页后点击\mybox[green]{sign up}进行注册，按照页面信息提示填写注册表单创建账号\footnote{使用Google邮箱账号注册更为方便}。选择免费公开的仓库(\mybox[green]{Unlimited public repositories for free})，跳过用户调查网站，即注册成功，并进入GitHub主页。
+			\par{}进入GitHub自己的主页后\footnote{例：\url{https://github.com/lxlApplemuscle}}，需要先新建仓库和建立站点。点击仓库(\mybox[green]{Repositories})$\rightarrow$新建(\mybox[green]{New})，进入新建仓库(\mybox[green]{New repository})页面。完成仓库的命名，并简要进行描述(\mybox[green]{Description})，选择公开(\mybox[green]{Public})并勾选添加\mybox[green]{README file}，最后点击创建仓库(\mybox[green]{Create repository})即可完成。
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/github1}
+				\caption{创建仓库页面}
+				\label{pic1}
+			\end{figure}
+			\par{}成功创建仓库后，可以点击Repositories查看所有已建立的仓库。点击仓库名可以进入该库页面，了解其基本信息。点击进入设置(\mybox[green]{Settings})页面，具有修改仓库名字、修改默认分支(\mybox[green]{branch})名字等功能。设置中同样可以删除仓库，将页面拉到最下方，可以看到危险区(\mybox[green]{Danger Zone})，点击最下方的删除此库(\mybox[green]{Delete this repository})进入删除页面。进行删除操作时，不仅要多次确认，还要手动输入项目的名称以防止误删，最后还要输入GitHub的密码进行验证，才能成功删除仓库。
+		\subsection{下载与上传文件}
+			\par{}完成仓库的创建后，就可以进行文件的下载和上传；也可以进入他人的GitHub主页，下载优秀的代码和资料，极大的方便了知识的传播与分享。但通过页面下载和上传方式较为繁复，为了更加轻松方便的进行资源的上传与下载，我们将学习Git分布式版本管理工具的使用。
+		\subsubsection{Git的安装与配置}
+			\par{}Git软件的官网为\url{https://git-scm.com/downloads}\footnote[1]{官网速度较慢，可以在腾讯软件中心下载，\url{https://pc.qq.com/detail/13/detail\_22693.html}}。安装下载过程并不复杂，按照流程一步一步进行即可，配置选择默认即可，注意安装路径为\mybox{纯英文路径}，防止报错。安装完成后，点击鼠标右键即可打开Git Bash页面：
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/git1}
+				\caption{打开Git Bash}
+				\label{pic2}
+			\end{figure}
+			\par{}Git客户端安装后，需要使用SSH与GitHub远程连接：
+			\begin{lstlisting}[language=bash, numbers=none]
+git config --global  "UserName" #连接注册名
+git config --global  "UserMail" #连接注册邮箱
+ssh-keygen -t rsa -C "UserMail" #生成SSH
+			\end{lstlisting}
+			完成上述工作后，会在C:/User/用户/.ssh路径下存放SSH文件，其中\mybox[green]{id\_rsa}为私钥，\mybox[green]{id\_rsa.pub}为公钥。复制id\_rsa.pub中全部内容，打开GitHub$\rightarrow$个人账户$\rightarrow$Setting，选择\mybox[green]{SSH and GPG keys}，点击\mybox[green]{New SSH key}，自定义\mybox[green]{Title}然后粘贴上文复制的内容，完成连接。
+			\begin{lstlisting}[language=bash, numbers=none]
+ssh -T git@github.com 
+			\end{lstlisting}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/git2}
+				\caption{成功完成连接展示}
+				\label{pic3}
+			\end{figure}
+		\subsubsection{推送文件}
+			\begin{itemize}[leftmargin=12pt]
+				\item[1]
+				已经建立远程仓库之后，在本地建立一个文件夹，在命令行中打开该文件夹并执行\mybox[green]{git init}命令，将该文件夹初始化成一个仓库。
+			\end{itemize}
+			\begin{itemize}[leftmargin=12pt]
+				\item[2]
+				在执行\mybox[green]{clone}命令，将远程仓库中的内容clone到本地仓库中：
+				\begin{lstlisting}[language=bash, numbers=none]
+git clone git@github.com:UserName/RepoName.git
+				\end{lstlisting}
+			\end{itemize}
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/clone1}
+				\caption{clone命令完成效果}
+				\label{pic4}
+			\end{figure}
+			\begin{itemize}[leftmargin=12pt]
+				\item[3]
+				向本地仓库中手动添加拟推送远程仓库的文件及文件夹，用\mybox[green]{ls}可以看到本地仓库中的文件，然后在本地仓库中执行\mybox[green]{add}命令
+				\begin{lstlisting}[language=bash, numbers=none]
+git add signalFile    #添加单个文件
+git add File1/ File2/ #添加多个文件夹，文件夹之间用空格隔开
+git add .             #直接添加当前仓库下所有文件
+				\end{lstlisting}
+			\end{itemize}
+			
+\end{document}
+
+
+
+
+
