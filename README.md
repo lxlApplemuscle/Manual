@@ -1,0 +1,2 @@
+# Manual
+Manual of computerese
