@@ -1,12 +1,12 @@
-Files about Computerese Manual \n
-Main Files in /Manual/comManual/ \n
-	myModel.cls \n
-	manual.tex \n
-	manual.pdf \n
+Files about Computerese Manual
+Main Files in /Manual/comManual/
+	myModel.cls 
+	manual.tex 
+	manual.pdf 
 Main content
-	Section 1: GitHub \n
-	Section 2: Linux \n
-Edit Author: \n
-	Applemuscle \n
+	Section 1: GitHub 
+	Section 2: Linux
+Edit Author: 
+	Applemuscle
 
 	
