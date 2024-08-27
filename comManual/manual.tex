@@ -19,13 +19,19 @@
 			\par{}成功创建仓库后，可以点击Repositories查看所有已建立的仓库。点击仓库名可以进入该库页面，了解其基本信息。点击进入设置(\mybox[green]{Settings})页面，具有修改仓库名字、修改默认分支(\mybox[green]{branch})名字等功能。设置中同样可以删除仓库，将页面拉到最下方，可以看到危险区(\mybox[green]{Danger Zone})，点击最下方的删除此库(\mybox[green]{Delete this repository})进入删除页面。进行删除操作时，不仅要多次确认，还要手动输入项目的名称以防止误删，最后还要输入GitHub的密码进行验证，才能成功删除仓库。
 		\subsection{下载与上传文件}
 			\par{}完成仓库的创建后，就可以进行文件的下载和上传；也可以进入他人的GitHub主页，下载优秀的代码和资料，极大的方便了知识的传播与分享。但通过页面下载和上传方式较为繁复，为了更加轻松方便的进行资源的上传与下载，我们将学习Git分布式版本管理工具的使用。
+			\begin{figure}[H]
+				\centering
+				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/git0}
+				\caption{Git基本操作示意图}
+				\label{pic2}
+			\end{figure}
 		\subsubsection{Git的安装与配置}
 			\par{}Git软件的官网为\url{https://git-scm.com/downloads}\footnote[1]{官网速度较慢，可以在腾讯软件中心下载，\url{https://pc.qq.com/detail/13/detail\_22693.html}}。安装下载过程并不复杂，按照流程一步一步进行即可，配置选择默认即可，注意安装路径为\mybox{纯英文路径}，防止报错。安装完成后，点击鼠标右键即可打开Git Bash页面：
 			\begin{figure}[H]
 				\centering
 				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/git1}
 				\caption{打开Git Bash}
-				\label{pic2}
+				\label{pic3}
 			\end{figure}
 			\par{}Git客户端安装后，需要使用SSH与GitHub远程连接：
 			\begin{lstlisting}[language=bash, numbers=none]
@@ -39,9 +45,9 @@ ssh -T git@github.com
 			\end{lstlisting}
 			\begin{figure}[H]
 				\centering
-				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/git2}
+				\includegraphics[width=.55\textwidth]{D:/professional courses/Computerese Manual/pic/git2}
 				\caption{成功完成连接展示}
-				\label{pic3}
+				\label{pic4}
 			\end{figure}
 		\subsubsection{推送文件}
 			\begin{itemize}[leftmargin=12pt]
@@ -50,7 +56,7 @@ ssh -T git@github.com
 			\end{itemize}
 			\begin{itemize}[leftmargin=12pt]
 				\item[2]
-				在执行\mybox[green]{clone}命令，将远程仓库中的内容clone到本地仓库中：
+				在执行\mybox[green]{clone}命令后，可以将远程仓库中的内容clone到本地仓库中，实现文件的下载：
 				\begin{lstlisting}[language=bash, numbers=none]
 git clone git@github.com:UserName/RepoName.git
 				\end{lstlisting}
@@ -59,21 +65,29 @@ git clone git@github.com:UserName/RepoName.git
 				\centering
 				\includegraphics[width=.45\textwidth]{D:/professional courses/Computerese Manual/pic/clone1}
 				\caption{clone命令完成效果}
-				\label{pic4}
+				\label{pic5}
 			\end{figure}
 			\begin{itemize}[leftmargin=12pt]
 				\item[3]
-				向本地仓库中手动添加拟推送远程仓库的文件及文件夹，用\mybox[green]{ls}可以看到本地仓库中的文件，然后在本地仓库中执行\mybox[green]{add}命令
+				向本地仓库中手动添加拟推送远程仓库的文件及文件夹\footnote[1]{注意：此处手动向本地仓库中添加文件并不意味着已上传至本地仓库中（可以看作你想存储的“货物”已经进了清单，但还没有入库）}，用\mybox[green]{ls}可以看到本地仓库中的文件，然后在本地仓库中执行\mybox[green]{add}命令，添加文件到暂存区。
 				\begin{lstlisting}[language=bash, numbers=none]
 git add signalFile    #添加单个文件
 git add File1/ File2/ #添加多个文件夹，文件夹之间用空格隔开
 git add .             #直接添加当前仓库下所有文件
+git status            #查看仓库当前的状态，显示有变更的文件
 				\end{lstlisting}
 			\end{itemize}
-			
+			\begin{itemize}[leftmargin=12pt]
+				\item[4]
+				文件进入暂存区后，执行\mybox[green]{commit}命令提交到本地仓库，最后执行\mybox[green]{push}命令，将文件推送至远程仓库中，完成文件的上传。
+				\begin{lstlisting}[language=bash, numbers=none]
+git commit -m "注释" #-m用于提交暂存区的文件，注释可以简单记录信息
+git push origin branchName #提交文件于目标分支，默认为main分支
+				\end{lstlisting}
+			\end{itemize}
+\clearpage
+	\section{Linux}
 \end{document}
-
-
 
 
 
